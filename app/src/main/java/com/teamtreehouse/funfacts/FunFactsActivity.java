@@ -19,6 +19,11 @@ public class FunFactsActivity extends Activity {
     private ColorWheel mColorWheel = new ColorWheel();
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fun_facts);
