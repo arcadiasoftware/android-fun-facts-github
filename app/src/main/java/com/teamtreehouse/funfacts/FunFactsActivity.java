@@ -20,6 +20,9 @@ public class FunFactsActivity extends Activity {
     private FactBook mFactBook = new FactBook();
     private ColorWheel mColorWheel = new ColorWheel();
     private TextView mFactLabel;
+    private Button mShowFactButton;
+    private RelativeLayout mRelativeLayout;
+
     private String mFact;
     private int mColor;
 
@@ -38,6 +41,8 @@ public class FunFactsActivity extends Activity {
         mFact = savedInstanceState.getString(KEY_FACT);
         mFactLabel.setText(mFact);
         mColor = savedInstanceState.getInt(KEY_COLOR);
+        mRelativeLayout.setBackgroundColor(mColor);
+        mShowFactButton.setTextColor(mColor);
     }
 
     @Override
@@ -47,8 +52,8 @@ public class FunFactsActivity extends Activity {
 
         // Declare our View variables and assign them the Views from the layout file
         mFactLabel = (TextView) findViewById(R.id.factTextView);
-        final Button showFactButton = (Button) findViewById(R.id.showFactButton);
-        final RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.relativeLayout);
+        mShowFactButton = (Button) findViewById(R.id.showFactButton);
+        mRelativeLayout = (RelativeLayout) findViewById(R.id.relativeLayout);
 
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
@@ -57,10 +62,10 @@ public class FunFactsActivity extends Activity {
                 mFactLabel.setText(mFact);
 
                 mColor = mColorWheel.getColor();
-                relativeLayout.setBackgroundColor(mColor);
-                showFactButton.setTextColor(mColor);
+                mRelativeLayout.setBackgroundColor(mColor);
+                mShowFactButton.setTextColor(mColor);
             }
         };
-        showFactButton.setOnClickListener(listener);
+        mShowFactButton.setOnClickListener(listener);
     }
 }
